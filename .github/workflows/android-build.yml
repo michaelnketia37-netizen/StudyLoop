@@ -26,7 +26,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Find Debug APK
         id: find_apk
@@ -46,7 +46,6 @@ jobs:
           echo "### Debug APK Build Complete ✅"
           echo "- **Path**: ${{ steps.find_apk.outputs.apk_path }}"
           echo "- **Size**: ${{ steps.find_apk.outputs.apk_size }}"
-          echo "- **Build Time**: $(date)"
           ls -lh "${{ steps.find_apk.outputs.apk_path }}"
 
       - name: Upload Debug APK
@@ -56,9 +55,10 @@ jobs:
           path: ${{ steps.find_apk.outputs.apk_path }}
           retention-days: 7
 
-      - name: Upload Build Logs
+      - name: Show Build Logs on Failure
         if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-logs
-          path: build/
+        run: |
+          echo "### Build Failed - Checking Logs"
+          cat build/outputs/errors.txt 2>/dev/null || echo "No error log found"
+          ls -la ./
+          ls -la ./gradlew
