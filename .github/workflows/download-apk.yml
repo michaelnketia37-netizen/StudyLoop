@@ -1,0 +1,83 @@
+name: Download APK from Repository
+
+on:
+  workflow_dispatch:      # Manual trigger from Actions tab
+  push:
+    branches:
+      - main
+      - develop
+  # Uncomment for scheduled runs:
+  # schedule:
+  #   - cron: '0 0 * * 0'  # Weekly on Sunday
+
+env:
+  APK_NAME: app-release.apk
+  OUTPUT_DIR: ./apk-output
+
+jobs:
+  download-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Output Directory
+        run: mkdir -p ${{ env.OUTPUT_DIR }}
+
+      - name: Find APK File
+        id: find_apk
+        run: |
+          APK_PATH=$(find . -name "*.apk" -type f | grep -E "(release|build)" | head -1)
+          if [ -z "$APK_PATH" ]; then
+            echo "❌ APK not found in repository"
+            exit 1
+          fi
+          echo "✅ APK found at: $APK_PATH"
+          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
+
+          APK_SIZE=$(du -h "$APK_PATH" | cut -f1)
+          echo "apk_size=$APK_SIZE" >> $GITHUB_OUTPUT
+
+      - name: Copy APK to Output Directory
+        run: |
+          cp "${{ steps.find_apk.outputs.apk_path }}" "${{ env.OUTPUT_DIR }}/${{ env.APK_NAME }}"
+          echo "✅ APK copied successfully"
+          ls -lh "${{ env.OUTPUT_DIR }}"
+
+      - name: Generate APK Info
+        run: |
+          echo "## APK Information" > apk-info.md
+          echo "- **File**: ${{ env.APK_NAME }}" >> apk-info.md
+          echo "- **Size**: ${{ steps.find_apk.outputs.apk_size }}" >> apk-info.md
+          echo "- **Build Date**: $(date)" >> apk-info.md
+          echo "- **Commit**: ${{ github.sha }}" >> apk-info.md
+          cat apk-info.md
+
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-release
+          path: ${{ env.OUTPUT_DIR }}/${{ env.APK_NAME }}
+          retention-days: 30
+
+      - name: Upload APK Info
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-info
+          path: apk-info.md
+          retention-days: 30
+
+      - name: Create Release (Optional)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body_path: apk-info.md
+          draft: false
+          prerelease: false
