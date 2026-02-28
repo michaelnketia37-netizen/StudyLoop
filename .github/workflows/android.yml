@@ -1,30 +1,106 @@
-name: Build Android APK
+name: Download APK from Repository
 
 on:
+  workflow_dispatch: {}
   push:
-    branches: [main]
+    branches:
+      - main
+      - develop
+
+env:
+  APK_NAME: app-release.apk
+  OUTPUT_DIR: ./apk-output
 
 jobs:
-  build:
+  download-apk:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
-          distribution: temurin
-          java-version: 17
+          fetch-depth: 0
 
-      - name: Grant execute permission
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Remove Old Gradlew
+        run: |
+          rm -f ./gradlew ./gradlew.bat
+          echo "✅ Old gradlew removed"
+
+      - name: Regenerate Gradlew with Gradle 8.9
+        run: |
+          gradle wrapper --gradle-version=8.9
+          echo "✅ Gradlew 8.9 generated"
+
+      - name: Ensure gradlew is executable  # <<< Correction step
         run: chmod +x ./gradlew
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      - name: Verify Gradle Version
+        run: ./gradlew --version
 
-      - name: Upload Debug APK
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --stacktrace --no-daemon
+
+      - name: Create Output Directory
+        run: mkdir -p ${{ env.OUTPUT_DIR }}
+
+      - name: Find APK File
+        id: find_apk
+        run: |
+          APK_PATH=$(find . -path "*/build/outputs/apk/release/*.apk" -type f | head -1)
+          if [ -z "$APK_PATH" ]; then
+            echo "❌ APK not found in repository"
+            exit 1
+          fi
+          echo "✅ APK found at: $APK_PATH"
+          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
+
+          APK_SIZE=$(du -h "$APK_PATH" | cut -f1)
+          echo "apk_size=$APK_SIZE" >> $GITHUB_OUTPUT
+
+      - name: Copy APK to Output Directory
+        run: |
+          cp "${{ steps.find_apk.outputs.apk_path }}" "${{ env.OUTPUT_DIR }}/${{ env.APK_NAME }}"
+          echo "✅ APK copied successfully"
+          ls -lh "${{ env.OUTPUT_DIR }}"
+
+      - name: Generate APK Info
+        run: |
+          echo "## APK Information" > apk-info.md
+          echo "- **File**: ${{ env.APK_NAME }}" >> apk-info.md
+          echo "- **Size**: ${{ steps.find_apk.outputs.apk_size }}" >> apk-info.md
+          echo "- **Build Date**: $(date)" >> apk-info.md
+          echo "- **Commit**: ${{ github.sha }}" >> apk-info.md
+          cat apk-info.md
+
+      - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: apk-release
+          path: ${{ env.OUTPUT_DIR }}/${{ env.APK_NAME }}
+          retention-days: 30
+
+      - name: Upload APK Info
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-info
+          path: apk-info.md
+          retention-days: 30
+
+      - name: Create Release (Optional)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body_path: apk-info.md
+          draft: false
+          prerelease: false
