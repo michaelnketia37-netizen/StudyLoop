@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_diagonal"
+    android:padding="16dp">
+
+    <!-- Big timer display -->
+    <TextView
+        android:id="@+id/tv_stopwatch_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00:00.00"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        android:textColor="@color/accent"
+        android:gravity="center"
+        android:fontFamily="monospace"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp"/>
+
+    <!-- Control buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↺ Reset"
+            android:layout_marginEnd="12dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/text2"/>
+
+        <Button
+            android:id="@+id/btn_start_stop"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="▶ Start"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btn_lap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lap"
+            android:layout_marginStart="12dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/accent"/>
+
+    </LinearLayout>
+
+    <!-- Lap times -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lap Times"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:layout_marginBottom="8dp"/>
+
+    <ListView
+        android:id="@+id/lv_laps"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/border"
+        android:dividerHeight="1dp"/>
+
+</LinearLayout>

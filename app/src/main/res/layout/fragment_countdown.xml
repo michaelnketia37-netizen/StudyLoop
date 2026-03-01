@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_diagonal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Quick presets -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quick Presets"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_marginBottom="8dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+            <LinearLayout
+                android:id="@+id/ll_presets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+        </HorizontalScrollView>
+
+        <!-- Number picker layout -->
+        <LinearLayout
+            android:id="@+id/layout_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="HH" android:textColor="@color/text3" android:textSize="11sp" android:gravity="center"/>
+                    <NumberPicker android:id="@+id/np_hours"
+                        android:layout_width="80dp" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text=" : " android:textSize="32sp" android:textStyle="bold" android:textColor="@color/text"/>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="MM" android:textColor="@color/text3" android:textSize="11sp" android:gravity="center"/>
+                    <NumberPicker android:id="@+id/np_minutes"
+                        android:layout_width="80dp" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text=" : " android:textSize="32sp" android:textStyle="bold" android:textColor="@color/text"/>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SS" android:textColor="@color/text3" android:textSize="11sp" android:gravity="center"/>
+                    <NumberPicker android:id="@+id/np_seconds"
+                        android:layout_width="80dp" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Running display -->
+        <LinearLayout
+            android:id="@+id/layout_running"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_countdown_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00.00"
+                android:textSize="72sp"
+                android:textStyle="bold"
+                android:textColor="@color/accent"
+                android:fontFamily="monospace"
+                android:paddingTop="24dp"
+        android:paddingBottom="24dp"/>
+
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="24dp">
+
+            <Button
+                android:id="@+id/btn_countdown_reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↺ Reset"
+                android:layout_marginEnd="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textColor="@color/text2"/>
+
+            <Button
+                android:id="@+id/btn_countdown_start"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="▶ Start"
+                android:backgroundTint="@color/accent"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand -->
+    <color name="accent">#6C63FF</color>
+    <color name="accent2">#FF6584</color>
+    <color name="accent3">#7C4DFF</color>
+    <color name="orange">#FF6B35</color>
+    <color name="green">#00C853</color>
+
+    <!-- Light surfaces (white/ash theme) -->
+    <color name="bg">#F8F9FA</color>
+    <color name="bg_start">#FFFFFF</color>
+    <color name="bg_end">#E8E8EE</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface2">#F0F0F5</color>
+    <color name="border">#E0E0EA</color>
+
+    <!-- Text (dark on light) -->
+    <color name="text">#1A1A2E</color>
+    <color name="text2">#4A4A6A</color>
+    <color name="text3">#9090A8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Nav -->
+    <color name="nav_active">#6C63FF</color>
+    <color name="nav_inactive">#9090A8</color>
+
+    <!-- Calc display -->
+    <color name="calc_lcd">#B8D4B0</color>
+    <color name="calc_lcd_text">#1A2A1A</color>
+
+    <!-- Card shadows -->
+    <color name="shadow">#1A6C63FF</color>
+</resources>

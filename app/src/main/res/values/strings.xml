@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StudyLoop</string>
+    <string name="nav_alarm">Alarms</string>
+    <string name="nav_reminder">Study</string>
+    <string name="nav_notes">Notes</string>
+    <string name="nav_todo">To-Do</string>
+    <string name="nav_calc">Calc</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_settings">More</string>
+    <string name="developer">Michael · Ghana</string>
+</resources>

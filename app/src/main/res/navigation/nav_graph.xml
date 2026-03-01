@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_alarm">
+
+    <fragment android:id="@+id/nav_alarm"
+        android:name="com.studyloop.alarm.AlarmFragment"
+        android:label="Alarms"/>
+
+    <fragment android:id="@+id/nav_reminder"
+        android:name="com.studyloop.reminder.ReminderFragment"
+        android:label="Reminders">
+        <action android:id="@+id/action_reminder_to_detail"
+            app:destination="@id/nav_reminder_detail"/>
+    </fragment>
+
+    <fragment android:id="@+id/nav_reminder_detail"
+        android:name="com.studyloop.reminder.ReminderDetailFragment"
+        android:label="Detail">
+        <argument android:name="REMINDER_ID" app:argType="string"/>
+    </fragment>
+
+    <fragment android:id="@+id/nav_notes"
+        android:name="com.studyloop.notes.NotesFragment"
+        android:label="Notes"/>
+
+    <fragment android:id="@+id/nav_todo"
+        android:name="com.studyloop.todo.TodoFragment"
+        android:label="To-Do"/>
+
+    <fragment android:id="@+id/nav_calc"
+        android:name="com.studyloop.calc.CalcFragment"
+        android:label="Calculator"/>
+
+    <fragment android:id="@+id/nav_settings"
+        android:name="com.studyloop.SettingsFragment"
+        android:label="Settings"/>
+
+    <fragment android:id="@+id/nav_calendar"
+        android:name="com.studyloop.calendar.CalendarFragment"
+        android:label="Calendar"/>
+
+</navigation>

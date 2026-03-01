@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_diagonal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚙️ Settings"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Share App -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Share &amp; Invite" android:textStyle="bold"
+                    android:textColor="@color/text" android:layout_marginBottom="4dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Share StudyLoop with friends and family"
+                    android:textColor="@color/text2" android:textSize="12sp" android:layout_marginBottom="12dp"/>
+                <Button android:id="@+id/btn_share_app"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="🔗 Share StudyLoop"
+                    android:backgroundTint="@color/accent" android:textColor="@color/white"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Rate App -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Rate Us ⭐" android:textStyle="bold"
+                    android:textColor="@color/text" android:layout_marginBottom="4dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Enjoying StudyLoop? Leave us a review!"
+                    android:textColor="@color/text2" android:textSize="12sp" android:layout_marginBottom="12dp"/>
+                <Button android:id="@+id/btn_rate"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="⭐ Rate on Play Store"
+                    android:backgroundTint="@color/orange" android:textColor="@color/white"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Legal -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Legal" android:textStyle="bold"
+                    android:textColor="@color/text" android:layout_marginBottom="12dp"/>
+                <Button android:id="@+id/btn_privacy"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="🔒 Privacy Policy"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:textColor="@color/accent"/>
+                <Button android:id="@+id/btn_terms"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="📄 Terms of Use"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:textColor="@color/accent"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Version -->
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/text3"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

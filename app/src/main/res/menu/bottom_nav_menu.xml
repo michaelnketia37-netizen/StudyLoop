@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_alarm"
+        android:icon="@drawable/ic_alarm"
+        android:title="Alarms"/>
+    <item android:id="@+id/nav_reminder"
+        android:icon="@drawable/ic_brain"
+        android:title="Study"/>
+    <item android:id="@+id/nav_notes"
+        android:icon="@drawable/ic_notes"
+        android:title="Notes"/>
+    <item android:id="@+id/nav_todo"
+        android:icon="@drawable/ic_check"
+        android:title="To-Do"/>
+    <item android:id="@+id/nav_calc"
+        android:icon="@drawable/ic_calc"
+        android:title="Calc"/>
+    <item android:id="@+id/nav_calendar"
+        android:icon="@drawable/ic_calendar"
+        android:title="Calendar"/>
+    <item android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="More"/>
+</menu>

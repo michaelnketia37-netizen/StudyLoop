@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Forgetting curve line -->
+    <path
+        android:fillColor="#00FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:pathData="M18,30 C25,30 28,55 35,58 C38,72 40,60 45,56 C48,68 50,52 55,48 C58,58 60,44 65,40 C68,48 70,36 75,33 C78,40 80,30 88,27"/>
+
+    <!-- Review dot 1 (green circle as path) -->
+    <path
+        android:fillColor="#43E97B"
+        android:pathData="M35,58 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+
+    <!-- Review dot 2 -->
+    <path
+        android:fillColor="#43E97B"
+        android:pathData="M45,56 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+
+    <!-- Review dot 3 -->
+    <path
+        android:fillColor="#43E97B"
+        android:pathData="M55,48 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+
+    <!-- Review dot 4 (yellow) -->
+    <path
+        android:fillColor="#F9CA24"
+        android:pathData="M65,40 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+
+    <!-- Review dot 5 -->
+    <path
+        android:fillColor="#F9CA24"
+        android:pathData="M75,33 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+
+    <!-- Review dot 6 (pink) -->
+    <path
+        android:fillColor="#FF6584"
+        android:pathData="M85,28 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+
+    <!-- Book outline (white) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,75 L18,92 L18,94 L20,94 L46,94 L48,94 L48,92 L48,75 L48,73 L46,73 L20,73 L18,73 Z"/>
+
+    <!-- Book inner (purple) -->
+    <path
+        android:fillColor="#6C63FF"
+        android:pathData="M21,76 L45,76 L45,91 L21,91 Z"/>
+
+    <!-- Book lines -->
+    <path
+        android:fillColor="#00FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M25,81 L41,81"/>
+
+    <path
+        android:fillColor="#00FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M25,84 L41,84"/>
+
+    <path
+        android:fillColor="#00FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M25,87 L35,87"/>
+
+    <!-- Up arrow (green) -->
+    <path
+        android:fillColor="#00FFFFFF"
+        android:strokeColor="#43E97B"
+        android:strokeWidth="3"
+        android:pathData="M80,88 L80,72"/>
+
+    <path
+        android:fillColor="#00FFFFFF"
+        android:strokeColor="#43E97B"
+        android:strokeWidth="3"
+        android:pathData="M74,78 L80,72 L86,78"/>
+
+</vector>
