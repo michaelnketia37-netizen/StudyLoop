@@ -1,4 +1,4 @@
-# 📚 StudyLoop — Android App
+#  📚 StudyLoop — Android App
 
 Spaced Repetition · Forgetting Curve · Productivity Suite
 
